@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block conteudo %}
+<div class="row m-2">
+    <div class="col m-2"></div>
+    <div class="col m-2">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'admin.png' %}" width="200" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">ACESSO ADMINISTRADOR</h5>
+                <p class="card-text">Sou administrador.</p>
+                <a href="/admin" class="btn btn-primary">Entrar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col m-2">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'user.png' %}" width="200" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">ACESSO ESTUDANTE</h5>
+                <p class="card-text">Já possuo cadastro.</p>
+                <a href="/login_user" class="btn btn-primary">Entrar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col m-2">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'cadastro.png' %}" width="200" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">ACESSO ESTUDANTE</h5>
+                <p class="card-text">Ainda não possuo cadastro</p>
+                <a href="/cadastro" class="btn btn-primary">Criar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col m-2"></div>
+</div>
+{% endblock conteudo %}

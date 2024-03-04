@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mb-4">Cadastro do usuário</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="namecompleto" class="form-label">Nome completo</label>
+                        <input type="text" class="form-control" id="namecompleto" name="namecompleto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nomemae" class="form-label">Nome da mãe</label>
+                        <input type="text" class="form-control" id="nomemae" name="nomemae" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="datanascimento" class="form-label">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="datanascimento" name="datanascimento" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="naturalidade" class="form-label">Naturalidade</label>
+                        <input type="text" class="form-control" id="naturalidade" name="naturalidade" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rg" class="form-label">Número do RG</label>
+                        <input type="text" class="form-control" id="rg" name="rg" required>
+                    </div>
+                    <div class="mb-3">Instituição e Campus<select name="instituicao" class="form-select"
+                            aria-label="Default select example">
+                            <option selected>Selecione a sua Instiuição de Ensino</option>
+                            <option value="1">UFMT - Campus Araguaia</option>
+                            <option value="2">UFMT - Campus Cuiabá</option>
+                            <option value="3">UFMT - Campus Sinop</option>
+                        </select></div>
+                    <div name="curso" class="mb-3">Curso que está vinculado<select name="instituicao" class="form-select"
+                            aria-label="Default select example">
+                            <option selected>Selecione o seu curso</option>
+                            <option value="1">Agronomia</option>
+                            <option value="2">Ciência da Computação</option>
+                            <option value="3">Engenharia da Computação</option>
+                            <option value="4">Física</option>
+                            <option value="5">Geografia</option>
+                            <option value="6">História</option>
+                            <option value="7">Letras</option>
+                            <option value="8">Matemática</option>
+                        </select></div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="file" accept="image/png, image/gif, image/jpeg" name="imgrg">
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" accept="image/png, image/gif, image/jpeg" name="imgcomp">
+                    </div>
+                    <button type="submit" class="btn btn-primary">ENVIAR SOLICITAÇÃO PARA ANÁLISE DE ABERTURA DE CADASTRO</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock conteudo %}
+   
