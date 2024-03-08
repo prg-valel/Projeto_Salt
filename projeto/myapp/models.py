@@ -11,6 +11,16 @@ class Perfil(models.Model):
     role = models.IntegerField(choices=ROLE_CHOICES, blank=True, null=True)
       
       
-class Estudante(models.Model):
+'''class Estudante(models.Model):
     id = models.AutoField(primary_key=True)
     imagem = models.ImageField(upload_to='images/', null=True, default=None)
+'''
+class Dados_usuario(models.Model):
+    cpf = models.CharField(max_length=11, primary_key=True)
+    nome = models.CharField(max_length=200)
+    nascimento = models.DateField()
+    naturalidade = models.TextField()
+    mae = models.TextField()
+    rg = models.IntegerField()
+    email = models.TextField()
+    
