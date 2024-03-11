@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">Cadastro do usuário</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nomeadmin" class="form-label">Nome completo</label>
+                    <input type="text" class="form-control" id="nomeadmin" name="nomeadmin" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <p> ATENÇÃO : Guarde o seu CPF e sua senha, eventualmente será necessário para logar.</p>
+                <button type="submit" class="btn btn-primary col-md-5"> Criar Administrador</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}
+

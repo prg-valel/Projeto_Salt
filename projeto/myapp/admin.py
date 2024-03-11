@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Perfil
+from .models import Estudante
 
-@admin.register(Perfil)
-class PerfilAdmin(admin.ModelAdmin):
+@admin.register(Estudante)
+class EstudanteAdmin(admin.ModelAdmin):
     pass

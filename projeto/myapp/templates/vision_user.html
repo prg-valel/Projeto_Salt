@@ -29,9 +29,8 @@
         <div class="card" style="width: 18rem;">
             <img src="{% static 'icon_card.jpg' %}" width="200" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">  Saiba a situação do seu cadastro atual </h5>
-                <p class="card-text"> Dados e saldos </p>
-                <a href="#" class="btn btn-primary"> Visualizar </a>
+                <h5 class="card-title">  {{user.first_name}} </h5>
+                <p class="card-text"><strong>Nº DE SÉRIE:</strong>{{user.id}}</p>
             </div>
         </div>
 
@@ -39,7 +38,8 @@
 
         <div class="col">
             <main class="container mt-3">
-                <h3> Dados do Usuário {{username}}</h3>
+                <h3> Dados do Usuário </h3>
+                
             </main>
         </div>
     </div>

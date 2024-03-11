@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponseBadRequest
-from .models import Dados_usuario
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
+from .models import Estudante
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def index(request):
     return HttpResponseRedirect('/plataform')
@@ -8,13 +11,45 @@ def index(request):
 def plataform_page(request):
     return render(request, 'plataform.html')
 
-def login_user_page(request):
-    return render(request, 'login_user.html')
+@login_required(login_url='/login_user')
+def cad_admin_page(request):
+    if not request.user.is_staff:
+        return HttpResponse('Você precisa estar logado como usuário staff para cadastrar um administrador')
+    
+    if request.method == 'GET':
+        return render(request, 'cad_admin.html')
+    elif request.method == 'POST':
+        nome = request.POST.get('nomeadmin')
+        cpf = request.POST.get('cpf')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = User.objects.create_user(cpf, email, password)
+        user.first_name = nome
+        user.save()
+        print(nome, cpf, email)
+        return HttpResponseRedirect('/vision_admin')
+    else:
+        return HttpResponseBadRequest()
 
-'''
-def login_admin_page(request):
-    return render(request, 'login_admin.html')
-'''
+def login_user_page(request):
+    if request.method == 'GET':
+        return render(request, 'login_user.html',{
+            'incorrect_login' : False
+        })
+    elif request.method == 'POST':
+        cpf = request.POST.get('cpf')
+        password = request.POST.get('senha')
+        user = authenticate(request, username=cpf, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/vision_user')
+        else:
+            return render(request, 'login_user.html', {
+                'incorrect_login' : True
+            })
+    else:
+        return HttpResponseBadRequest()
+    
 
 def cadastro_page(request):
     if request.method == 'GET':
@@ -28,16 +63,17 @@ def cadastro_page(request):
         rg =  request.POST.get('rg')
         email =  request.POST.get('email')
         password =  request.POST.get('senha')
-        dados = Dados_usuario()
-        dados.nome = nome
-        dados.mae = mae
-        dados.nascimento = nascimento
-        dados.naturalidade = naturalidade
-        dados.cpf = cpf
-        dados.rg = rg
-        dados.email = email
-        dados.password = password
-        dados.save()
+        user = User.objects.create_user(cpf, email, password)
+        user.first_name = nome
+        user.save()
+        perfil = Estudante()
+        perfil.user = user
+        perfil.mae = mae
+        perfil.nascimento = nascimento
+        perfil.naturalidade = naturalidade
+        perfil.cpf = cpf
+        perfil.rg = rg
+        perfil.save()
         return HttpResponseRedirect('/vision_user')
     else:
         return HttpResponseBadRequest()

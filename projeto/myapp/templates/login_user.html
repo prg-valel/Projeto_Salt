@@ -16,12 +16,15 @@
                     <label for="senha" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="senha" name="senha" required>
                 </div>
-
+                
                 {% if incorrect_login %}
+                <div>
                 CPF ou senha inválidos! Você possui cadastro em nosso site?
+                </div>
                 {% endif %}
+                
 
-                <button type="submit" class="btn btn-primary">Acessar</button>
+                <button type="submit" href="/vision_user" class="btn btn-primary">Acessar</button>
                 <a class="btn btn-outline-secondary" href="/cadastro" role="button">Não possuo cadastro</a>
             </form>
         </div>
