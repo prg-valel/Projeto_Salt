@@ -61,11 +61,14 @@ def cadastro_page(request):
         naturalidade = request.POST.get('naturalidade')
         cpf =  request.POST.get('cpf')
         rg =  request.POST.get('rg')
+        campus = request.POST.get('instituicao')
+        curso = request.POST.get('curso')
         email =  request.POST.get('email')
         password =  request.POST.get('senha')
         user = User.objects.create_user(cpf, email, password)
         user.first_name = nome
         user.save()
+        print(campus, curso)
         perfil = Estudante()
         perfil.user = user
         perfil.mae = mae
@@ -73,6 +76,8 @@ def cadastro_page(request):
         perfil.naturalidade = naturalidade
         perfil.cpf = cpf
         perfil.rg = rg
+        perfil.campus
+        perfil.curso
         perfil.save()
         return HttpResponseRedirect('/vision_user')
     else:
@@ -83,4 +88,7 @@ def vision_user_page(request):
     return render(request, 'vision_user.html')
 
 def vision_admin_page(request):
-    return render(request, 'vision_admin.html')
+    estudantes = Estudante.objects.all()
+    return render(request, 'vision_admin.html', {
+        'estudantes' : estudantes
+    })
