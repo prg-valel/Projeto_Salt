@@ -6,7 +6,7 @@
 
 **Este projeto foi desenvolvido como atividade final do curso de capacitação em Python da Cyber Edux, realizado de setembro de 2023 até março de 2024. Para mais informações, consulte o [enunciado](ENUNCIADO.md).**
 
-# Nome do Projeto
+# Salt
 
 <!-- Substitua a seguinte imagem por uma logo do seu projeto -->
 <img src="img/logo.png" width="150px">
