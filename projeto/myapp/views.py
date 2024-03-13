@@ -1,9 +1,12 @@
+import uuid
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 from .models import Estudante
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+
+
 
 def index(request):
     return HttpResponseRedirect('/plataform')
@@ -70,6 +73,7 @@ def cadastro_page(request):
         user.save()
         print(campus, curso)
         perfil = Estudante()
+        perfil.email = email
         perfil.user = user
         perfil.mae = mae
         perfil.nascimento = nascimento
@@ -81,14 +85,20 @@ def cadastro_page(request):
         perfil.save()
         return HttpResponseRedirect('/vision_user')
     else:
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest() 
 
-
+@login_required(login_url='/login_user')
 def vision_user_page(request):
-    return render(request, 'vision_user.html')
+    return render(request, 'vision_user.html', {
+        'estudante': request.user.estudante
+    })
 
+@login_required(login_url='/login_user')
 def vision_admin_page(request):
     estudantes = Estudante.objects.all()
     return render(request, 'vision_admin.html', {
         'estudantes' : estudantes
     })
+    
+def table_page(request):
+    return render(request, 'table.html')

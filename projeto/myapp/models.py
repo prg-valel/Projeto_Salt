@@ -21,7 +21,7 @@ CURSO = {
 
 class Estudante(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='estudante')
     cpf = models.CharField(max_length=20, unique=True)
     nascimento = models.DateField()
     naturalidade = models.CharField(max_length=200)
@@ -30,14 +30,4 @@ class Estudante(models.Model):
     email = models.CharField(max_length=200)
     status = models.IntegerField(choices=[(0, 'Pendente'), (1, 'Aprovado'), (2, 'Negado')], default=0)
     campus = models.IntegerField(choices=[(i, nome) for i, nome in CAMPUS.items()], default=0)
-    curso = models.IntegerField(choices=[(i, nome) for i, nome in CURSO.items()], default=0)
-    
-      
-'''
-class Campus(models.Model):
-    pass
-
-class Curso(models.Model):
-    nome = models.CharField(max_length=200)
-    campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
-'''
+    curso = models.IntegerField(choices=[(i, nome) for i, nome in CURSO.items()], default=0)      
