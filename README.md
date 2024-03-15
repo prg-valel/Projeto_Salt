@@ -12,7 +12,13 @@
 <img src="img/logo2.png" width="150px">
 
 <!-- Substitua o seguinte parágrafo por um resumo do seu projeto: -->
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+O site “Salt”, tem por finalidade facilitar a criação de cadastros no 
+Restaurante Universitário, disponibilizando a visualização do 
+carregamento do cartão, onde o aluno faz a solicitação do 
+cadastro - deve ser requisitado o comprovante da matrícula (para 
+comprovar que o usuário é aluno da Instituição X) e o documento original com foto 
+(para comprovar a identificação do aluno) - e o Administrador responsável por avaliar 
+a solicitação, aceitando-a ou não.
 
 ## Documentação
 
