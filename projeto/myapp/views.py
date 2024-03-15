@@ -4,9 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpRespon
 from .models import Estudante
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
-
+from django.contrib.auth.models import User 
 
 def index(request):
     return HttpResponseRedirect('/plataform')
@@ -15,10 +13,34 @@ def plataform_page(request):
     return render(request, 'plataform.html')
 
 @login_required(login_url='/login_user')
+def logout_page(request):
+    logout(request)
+    return HttpResponseRedirect('/plataform')
+
+def login_admin_page(request):
+    if request.method == 'GET':
+        return render(request, 'login_admin.html',{
+            'incorrect_login' : False
+        })
+    elif request.method == 'POST':
+        cpf = request.POST.get('cpf')
+        password = request.POST.get('senha')
+        user = authenticate(request, username=cpf, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/vision_admin')
+        else:
+            return render(request, 'login_admin.html', {
+                'incorrect_login' : True
+            })
+    else:
+        return HttpResponseBadRequest()
+
+
+@login_required(login_url='/login_user')
 def cad_admin_page(request):
     if not request.user.is_staff:
         return HttpResponse('Você precisa estar logado como usuário staff para cadastrar um administrador')
-    
     if request.method == 'GET':
         return render(request, 'cad_admin.html')
     elif request.method == 'POST':
@@ -80,21 +102,28 @@ def cadastro_page(request):
         perfil.naturalidade = naturalidade
         perfil.cpf = cpf
         perfil.rg = rg
-        perfil.campus
-        perfil.curso
+        perfil.campus = campus
+        perfil.curso = curso
         perfil.save()
-        return HttpResponseRedirect('/vision_user')
+        
+        return HttpResponseRedirect('/plataform') 
     else:
         return HttpResponseBadRequest() 
 
 @login_required(login_url='/login_user')
 def vision_user_page(request):
+    if not Estudante.objects.filter(user=request.user).exists():
+        return HttpResponse('Você não pode acessar esta página porque não é estudante')
+    
     return render(request, 'vision_user.html', {
         'estudante': request.user.estudante
     })
 
 @login_required(login_url='/login_user')
 def vision_admin_page(request):
+    if Estudante.objects.filter(user=request.user).exists():
+        return HttpResponse('Você não pode acessar esta página porque não é administrador')
+    
     estudantes = Estudante.objects.all()
     return render(request, 'vision_admin.html', {
         'estudantes' : estudantes

@@ -20,7 +20,8 @@
     </nav>
     <nav style="background-color:black" class="navbar navbar-light ">
         <div class="justify-content-mt-end">
-            <a class="btn btn-outline-secondary btn-sm" href="/plataform"> Sair </a>
+            <a class="btn btn-outline-secondary btn-sm" href="/plataform"> Ir para Página Inicial </a>
+            <a class="btn btn-outline-danger btn-sm" href="/logout"> Logout </a>
         </div>
     </nav>
 
@@ -39,7 +40,7 @@
         <div class="col">
             <main class="container mt-3">
                 <h3> Dados do Usuário </h3>
-                <div class="mb-1 fw-light fst-italic"><strong>CAMPUS E CURSO: </strong>{{estudante.campus}} - {{estudante.curso}}</div>
+                <div class="mb-1 fw-light fst-italic"><strong>CAMPUS E CURSO: </strong>{{estudante.get_campus_display}} - {{estudante.get_curso_display}}</div>
 
 
                 <div class="mb-1 fw-light"><strong>NOME DA MÃE: </strong>{{estudante.mae}}</div>
