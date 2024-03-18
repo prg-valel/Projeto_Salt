@@ -26,17 +26,6 @@
     </nav>
 
     <div class="row m-3">
-
-        <div class="card" style="width: 18rem;">
-            <img src="{% static 'icon_card.jpg' %}" width="200" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">  {{user.first_name}} </h5>
-                <p class="card-text"><strong>Nº DE SÉRIE:</strong>123458928451</p>
-            </div>
-        </div>
-
-
-
         <div class="col">
             <main class="container mt-3">
                 <h3> Dados do Usuário </h3>
@@ -50,6 +39,26 @@
 
             </main>
         </div>
+
+
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'status.png' %}" width="200" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{estudante.get_status_display}}</h5>
+                <p class="card-text"><strong>Nº DE SÉRIE:</strong>123458928451</p>
+            </div>
+        </div>
+
+      <div  class="col mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'icon_card.jpg' %}" width="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">  {{user.first_name}} </h5>
+                    <p class="card-text"><strong>Nº DE SÉRIE:</strong>123458928451</p>
+                </div>
+            </div>
+      </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

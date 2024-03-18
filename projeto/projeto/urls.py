@@ -8,6 +8,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
     path("plataform/", views.plataform_page),
+    path("aprovar/<int:id>", views.aprovar),
+    path("negar/<int:id>", views.negar),
     path("table/", views.table_page),
     path("cad_admin/", views.cad_admin_page),
     path("login_user/", views.login_user_page),

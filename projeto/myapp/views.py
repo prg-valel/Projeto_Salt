@@ -13,6 +13,25 @@ def plataform_page(request):
     return render(request, 'plataform.html')
 
 @login_required(login_url='/login_user')
+def aprovar(request, id):
+    if Estudante.objects.filter(user=request.user).exists():
+        return HttpResponseBadRequest()
+    estudante = Estudante.objects.get(id=id)
+    estudante.status = 1
+    estudante.save()
+    return HttpResponseRedirect('/vision_admin')
+
+@login_required(login_url='/login_user')
+def negar(request, id):
+    if Estudante.objects.filter(user=request.user).exists():
+        return HttpResponseBadRequest()
+    estudante = Estudante.objects.get(id=id)
+    estudante.status = 2
+    estudante.save()
+    return HttpResponseRedirect('/vision_admin')
+    
+
+@login_required(login_url='/login_user')
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/plataform')
@@ -124,9 +143,14 @@ def vision_admin_page(request):
     if Estudante.objects.filter(user=request.user).exists():
         return HttpResponse('Você não pode acessar esta página porque não é administrador')
     
-    estudantes = Estudante.objects.all()
+    estudantes_pendentes = Estudante.objects.filter(status=0)
+    estudantes_aprovados = Estudante.objects.filter(status=1)
+    estudantes_negados = Estudante.objects.filter(status=2)
+
     return render(request, 'vision_admin.html', {
-        'estudantes' : estudantes
+        'estudantes' : estudantes_pendentes,
+        'aprovados' : estudantes_aprovados,
+        'negados' : estudantes_negados
     })
     
 def table_page(request):

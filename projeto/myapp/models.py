@@ -15,7 +15,7 @@ CURSO = {
     4: 'Geografia',
     5: 'História',
     6: 'Letras',
-    7: 'Matemáica',
+    7: 'Matemática',
     8: 'Medicina'
 }
 
