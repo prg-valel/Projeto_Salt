@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+        <link rel="icon" href="{% static 'K.png' %}" type="image/x-icon">
+        <title>Gerenciamento de Alunos</title>
 </head>
 
 <body>
@@ -28,30 +29,73 @@
         </div>
     </nav>
 
-    <div class="row m-3">
-        {% for estudante in estudantes %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col-md-1">
-                        <img src="{% static 'usuario.jpg' %}" alt="Descrição da imagem" class="img-fluid img-fluid rounded-circle" >
-                    </div>
-                    <div class="col-md-5">
-                        <div class="mb-1 fw-bold">{{estudante.user.first_name}}</div>
-                        <div class="mb-1 fw-light">{{estudante.user.date_of_registration}}</div>
-                        <div class="mb-1">{{estudante.get_campus_display}} - {{estudante.get_curso_display}}</div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-20 d-flex justify-content-end">
-                        <a href="#" class="btn btn-primary">Visualizar</a>
-                        <a href="/aprovar/{{estudante.id}}" class="btn btn-success">APROVAR</a>
-                        <a href="/negar/{{estudante.id}}" class="btn btn-danger">NEGAR</a>
+    <div class="row mb-5">
+        <div class="col m-3">
+            <p class="mb-0 fw-bold text-uppercase" style="font-size: 15px; font-family: 'SuaFontePersonalizada', sans-serif;">APROVADOS</p>
+            {% for aprovado in aprovados %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-1">
+                            <img src="{% static 'usuario.jpg' %}" alt="Descrição da imagem" class="img-fluid img-fluid rounded-circle" >
+                        </div>
+                        <div class="col-md-5">
+                            <div class="mb-1">{{aprovado.get_status_display}}</div>
+                            <div class="mb-1 fw-bold">{{aprovado.user.first_name}}</div>
+                            <div class="mb-1">{{aprovado.get_campus_display}} - {{aprovado.get_curso_display}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div class="col m-3">
+            <p class="mb-0 fw-bold text-uppercase" style="font-size: 15px; font-family: 'SuaFontePersonalizada', sans-serif;">REPROVADOS</p>
+            {% for negados in negados %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-1">
+                            <img src="{% static 'usuario.jpg' %}" alt="Descrição da imagem" class="img-fluid img-fluid rounded-circle" >
+                        </div>
+                        <div class="col-md-5">
+                            <div class="mb-1">{{negados.get_status_display}}</div>
+                            <div class="mb-1 fw-bold">{{negados.user.first_name}}</div>
+                            <div class="mb-1">{{negados.get_campus_display}}</div>
+                            <div class="mb-1">{{negados.get_curso_display}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+                
+        <div class="col m-3">
+            <p class="mb-0 fw-bold text-uppercase" style="font-size: 15px; font-family: 'SuaFontePersonalizada', sans-serif;">PENDENTES</p>
+            {% for estudante in estudantes %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-1">
+                            <img src="{% static 'usuario.jpg' %}" alt="Descrição da imagem" class="img-fluid img-fluid rounded-circle" >
+                        </div>
+                        <div class="col-md-5">
+                            <div class="mb-1 fw-bold">{{estudante.user.first_name}}</div>
+                            <div class="mb-1 fw-light">{{estudante.user.date_of_registration}}</div>
+                            <div class="mb-1">{{estudante.get_campus_display}} - {{estudante.get_curso_display}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-20 d-flex justify-content-end">
+                            <a href="#" class="btn btn-primary">Visualizar</a>
+                            <a href="/aprovar/{{estudante.id}}" class="btn btn-success">APROVAR</a>
+                            <a href="/negar/{{estudante.id}}" class="btn btn-danger">NEGAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

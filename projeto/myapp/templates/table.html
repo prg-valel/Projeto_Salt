@@ -1,31 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{%block title%}Sobre nós{% endblock title%}
 {% block conteudo %}
-<div class="row m-3">
-    {% for negado in negados %}
-    <div class="card mb-3">
+
+<div class="mt-6">
+    <div class="card " style="width: 18rem;">
+        <img src="{% static 'cani.png' %}" class="card-img-top" alt="Cartão Boas-Vindas">
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-1">
-                    <img src="{% static 'usuario.jpg' %}" alt="Descrição da imagem" class="img-fluid img-fluid rounded-circle" >
-                </div>
-                <div class="col-md-5">
-                    <div class="mb-1 fw-bold">{{estudante.user.first_name}}</div>
-                    <div class="mb-1 fw-light">{{estudante.user.date_of_registration}}</div>
-                    <div class="mb-1">{{estudante.get_campus_display}} - {{estudante.get_curso_display}}</div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-20 d-flex justify-content-end">
-                    <a href="#" class="btn btn-primary">Visualizar</a>
-                    <a href="#" class="btn btn-success">APROVAR</a>
-                    <a href="#" class="btn btn-danger">NEGAR</a>
-                </div>
-            </div>
+            <h5 class="card-title">Cadastro fácil no RU - UFMT</h5>
+            <p class="card-text">Crie o seu cadastro, acompanhe e verifique as demandas.
+        </div>
+        <div class="card-body">
+            <button type="button" class="btn btn-outline-dark" href="/login_user">Verificar a solicitação</button>
+            <button type="button"class="btn btn-outline-dark" href="/login_user">Enviar solicitação</button>
         </div>
     </div>
-    {% endfor %}
-
 </div>
+
 {% endblock conteudo %}
