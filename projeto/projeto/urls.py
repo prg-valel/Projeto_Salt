@@ -18,6 +18,8 @@ urlpatterns = [
     path("vision_user/", views.vision_user_page),
     path("vision_admin/", views.vision_admin_page),
     path("logout/", views.logout_page),
+    path("recad/", views.recad_page),
+    path("visual/<int:id>", views.visual_page ),
 ]
 
 if settings.DEBUG:

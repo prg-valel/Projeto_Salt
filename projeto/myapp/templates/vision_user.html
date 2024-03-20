@@ -13,7 +13,7 @@
             border: 1px solid black;
             border-radius: 0;
         }
-        
+
         .footer {
             position: fixed;
             bottom: 0;
@@ -22,6 +22,23 @@
             color: white;
             text-align: center;
             padding: 10px 0;
+        }
+
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .message-container img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -46,7 +63,7 @@
             <div class="col-md-6">
                 <h3>Informações</h3>
                 <div class="row mb-1">
-                    <div class="col mb-2" >
+                    <div class="col mb-2">
                         <div class="card" style="width: 12rem;">
                             <img src="{% static 'status.png' %}" width="200" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -71,7 +88,8 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h1 class="card-title">{{user.first_name}}</h1>
-                        <div class="mb-1 fw-light fst-italic"><strong>CAMPUS E CURSO: </strong>{{estudante.get_campus_display}}
+                        <div class="mb-1 fw-light fst-italic"><strong>CAMPUS E CURSO:
+                            </strong>{{estudante.get_campus_display}}
                             - {{estudante.get_curso_display}}</div>
                         <div class="mb-1 fw-light"><strong>NOME DA MÃE: </strong>{{estudante.mae}}</div>
                         <div class="mb-1 fw-light"><strong>CPF: </strong>{{estudante.cpf}}</div>
@@ -89,11 +107,18 @@
                 <div class="col">
                     <span class="text-muted">© 2022 Salt.com. Todos os direitos reservados.</span>
                 </div>
-                    <a href="/table" class="btn btn-link">Sobre Nós</a>
+                <a href="/table" class="btn btn-link">Sobre Nós</a>
             </div>
         </div>
     </footer>
 
+    <div id="flutuante"
+        style="position: fixed; top: 20px; right: 20px; background-color: #f8d7da; color: #721c24; padding: 20px; border: 1px solid #f5c6cb; border-radius: 5px; z-index: 9999;">
+        <span onclick="this.parentNode.style.display = 'none';"
+            style="position: absolute; top: 5px; right: 10px; cursor: pointer;">X</span>
+        <h2><span style="font-size: 32px">&#128577;</span> Cadastro negado?</h2>
+        <p>Clique aqui para reenviar: <a href="/recad">reenviar</a></p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

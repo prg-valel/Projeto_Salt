@@ -12,6 +12,12 @@ def index(request):
 def plataform_page(request):
     return render(request, 'plataform.html')
 
+def visual_page(request, id):
+    estudante = Estudante.objects.get(id=id)
+    return render(request, 'visual.html', {
+        'estudante': estudante
+    })
+
 @login_required(login_url='/login_user')
 def aprovar(request, id):
     if Estudante.objects.filter(user=request.user).exists():
@@ -20,6 +26,10 @@ def aprovar(request, id):
     estudante.status = 1
     estudante.save()
     return HttpResponseRedirect('/vision_admin')
+
+def recad_page(request):
+    return render(request, 'recad.html')
+
 
 @login_required(login_url='/login_user')
 def negar(request, id):
@@ -123,6 +133,8 @@ def cadastro_page(request):
         perfil.rg = rg
         perfil.campus = campus
         perfil.curso = curso
+        perfil.imgrg = request.FILES['imgrg']
+        perfil.imgcomp = request.FILES['imgcomp']
         perfil.save()
         
         return HttpResponseRedirect('/plataform') 
