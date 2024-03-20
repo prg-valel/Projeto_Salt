@@ -1,20 +1,131 @@
-{% extends 'base.html' %}
 {% load static %}
-{%block title%}Sobre nós{% endblock title%}
-{% block conteudo %}
+<!doctype html>
+<html lang="pt-br">
 
-<div class="mt-6">
-    <div class="card " style="width: 18rem;">
-        <img src="{% static 'cani.png' %}" class="card-img-top" alt="Cartão Boas-Vindas">
-        <div class="card-body">
-            <h5 class="card-title">Cadastro fácil no RU - UFMT</h5>
-            <p class="card-text">Crie o seu cadastro, acompanhe e verifique as demandas.
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'saci.png' %}" type="image/x-icon">
+    <title>Sobre nós</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="/plataform">
+                <img src="{% static 'logo.png' %}" width="50" height="56" class="d-inline-block align-text-top-center">
+            </a>
         </div>
-        <div class="card-body">
-            <button type="button" class="btn btn-outline-dark" href="/login_user">Verificar a solicitação</button>
-            <button type="button"class="btn btn-outline-dark" href="/login_user">Enviar solicitação</button>
+    </nav>
+    <nav style="background-color: black;" class="navbar navbar-light ">
+        <div class="justify-content-mt-end"></div>
+    </nav>
+    <style>
+        .fixed-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Background com transparência */
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+            z-index: 9999;
+            /* Para garantir que a mensagem fique acima de outros elementos */
+        }
+
+        /* Estilo para o ícone de sorriso */
+        .smiley-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Estilo para o carrossel */
+        .carousel-img {
+            max-height: 400px;
+            /* Altura máxima para as imagens do carrossel */
+            object-fit: cover;
+            /* Garante que a imagem cubra o contêiner mantendo sua proporção */
+            border-radius: 20px;
+            /* Bordas arredondadas para as imagens */
+        }
+    </style>
+
+    <div class="container mt-2">
+        <div class="fixed-message">
+            <span class="smiley-icon">&#128522;</span> Arraste para baixo para ler mais
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'card3.png' %}" class="d-block w-100 rounded-top carousel-img"
+                                alt="Imagem de Boas-Vindas">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'card4.png' %}" class="d-block w-100 rounded-top carousel-img"
+                                alt="Segunda imagem">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'card5.png' %}" class="d-block w-100 rounded-top carousel-img"
+                                alt="Terceira imagem">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'nome.png' %}" class="d-block w-100 rounded-top carousel-img"
+                                alt="Terceira imagem">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                </div>
+                <div class="card shadow-lg mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-4">Bem-vindo ao cadastramento do Restaurante Universitário
+                            da
+                            UFMT!
+                        </h5>
+                        <p class="card-text">Nós, do Restaurante Universitário da UFMT, estamos comprometidos em
+                            fornecer um
+                            conforto aos nossos amados estudantes. Aqui está como nosso serviço funciona:</p>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Cadastre-se no nosso sistema para ter acesso ao RU. Se ainda não
+                                se
+                                cadastrou, <a href="/cadastro">clique aqui para se cadastrar</a>.</li>
+                            <li class="list-group-item">Após o cadastro, você pode verificar a situação atual da sua
+                                solicitação. <a href="/login_user">Clique aqui para conferir a situação atual</a>.</li>
+                            <li class="list-group-item">Compareça ao local do restaurante no horário agendado para
+                                retirar
+                                sua refeição. E apresente a numeração do seu cartão.</li>
+                            <li class="list-group-item">Aproveite sua refeição e repita o processo sempre que desejar
+                                uma
+                                refeição saborosa e equilibrada!</li>
+                            <li class="list-group-item"> <a href="https://www.ufmt.br/">Site da nossa universidade</a>, veja novas publicações!</li>
+                        </ol>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 text-center">
+                        <p>Pronto para começar? <a href="/cadastro" class="btn btn-dark">Cadastre-se agora</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-{% endblock conteudo %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

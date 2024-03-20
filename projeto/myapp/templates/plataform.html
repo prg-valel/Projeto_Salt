@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{%block title%}Salt{%endblock title%}
+{% block title %}Salt{% endblock title %}
 
 {% block conteudo %}
 <div class="row m-2">
     <div class="col m-2"></div>
     <div class="col m-2">
         <div class="card" style="width: 18rem;">
-            <img src="{% static 'admin.png' %}" width="200" class="card-img-top" alt="...">
+            <img src="{% static 'admins.png' %}" width="200" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">ACESSO ADMINISTRADOR</h5>
                 <p class="card-text">Sou administrador.</p>
@@ -18,7 +18,7 @@
 
     <div class="col m-2">
         <div class="card" style="width: 18rem;">
-            <img src="{% static 'user.png' %}" width="200" class="card-img-top" alt="...">
+            <img src="{% static 'loguser.png' %}" width="200" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">ACESSO ESTUDANTE</h5>
                 <p class="card-text">Já possuo cadastro.</p>
@@ -28,7 +28,7 @@
     </div>
     <div class="col m-2">
         <div class="card" style="width: 18rem;">
-            <img src="{% static 'cadastro.png' %}" width="200" class="card-img-top" alt="...">
+            <img src="{% static 'criar.png' %}" width="200" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">ACESSO ESTUDANTE</h5>
                 <p class="card-text">Ainda não possuo cadastro</p>
@@ -39,4 +39,15 @@
     <div class="col m-2"></div>
 </div>
 
+<div id="flutuante" style="position: fixed; top: 20px; right: 20px; background-color: #f8d7da; color: #721c24; padding: 20px; border: 1px solid #f5c6cb; border-radius: 5px; z-index: 9999;">
+    <span onclick="this.parentNode.style.display = 'none';" style="position: absolute; top: 5px; right: 10px; cursor: pointer;">X</span>
+    <h2><span style="font-size: 32px">&#10084;</span> Bem-vindo!</h2>
+    <p>Obrigado por visitar nosso site. Esperamos que você goste da sua experiência.</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-6 text-center">
+        <p>Quer saber mais sobre nós? Clique <a href="/table" class="text-decoration-none">aqui &#128150;</a></p>
+    </div>
+</div>
 {% endblock conteudo %}
