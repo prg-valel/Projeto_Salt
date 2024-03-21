@@ -13,10 +13,9 @@
 
 <!-- Substitua o seguinte parágrafo por um resumo do seu projeto: -->
 O site “Salt”, tem por finalidade facilitar a criação de cadastros no 
-Restaurante Universitário, disponibilizando a visualização do 
-carregamento do cartão, onde o aluno faz a solicitação do 
-cadastro - deve ser requisitado o comprovante da matrícula (para 
-comprovar que o usuário é aluno da Instituição X) e o documento original com foto 
+Restaurante Universitário, disponibilizando uma plataforma mais abrangedora, onde o aluno faz a solicitação do 
+cadastro - deve ser realizado o upload do comprovante da matrícula (para 
+comprovar que o usuário é aluno da Instituição X) e do documento original (RG) com foto 
 (para comprovar a identificação do aluno) - e o Administrador responsável por avaliar 
 a solicitação, aceitando-a ou não.
 
@@ -30,4 +29,4 @@ a solicitação, aceitando-a ou não.
 <!-- Coloque seu nome, uma foto sua e uma pequena bio sobre você na seguinte tabela: -->
 |  |  |
 |:-------------:|:------------------------------------------------------------:|
-|  <img src="img/perfil.jpeg" width="150px"></br> **Kamila Antonia** | Entusiasta |
+|  <img src="img/perfil.jpeg" width="150px"></br> **Kamila Antonia** | Entusiasta a artista |

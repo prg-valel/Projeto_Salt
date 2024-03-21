@@ -5,6 +5,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <a href="/vision_admin" class="btn btn-secondary btn-sm">Voltar</a>
             <p>Usuário:</p>
             <h1 class="mb-4" style="font-family: 'Arial', sans-serif;"><strong> {{estudante.user.first_name}}</strong>
             </h1>
@@ -12,6 +13,11 @@
             <div class="mb-3">
                 <label for="nomecompleto" class="form-label">Nome Completo:</label>
                 <input type="text" class="form-control" id="nomecompleto" value=" {{estudante.user.first_name}}"
+                    readonly>
+            </div>
+            <div class="mb-3">
+                <label for="nomemae" class="form-label">Nome da mãe:</label>
+                <input type="text" class="form-control" id="nomecompleto" value=" {{estudante.mae}}"
                     readonly>
             </div>
             <div class="mb-3">
@@ -36,11 +42,18 @@
                 <input type="email" class="form-control" id="email" value="{{ estudante.email }}" readonly>
             </div>
             <div class="mb-3">
-                <a href="{{estudante.imgrg.url}}"  target="_blank" alt="Descrição da imagem">aa</a>
+                <label for="image" class="form-label">FOTO DO RG:</label>
+                <a href="{{estudante.imgrg.url}}"  target="_blank" alt="Descrição da imagem">clique para abrir em outra aba</a>
             </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">FOTO DO COMPROVANTE DE MATRÍCULA:</label>
+                <a href="{{estudante.imgcomp.url}}"  target="_blank" alt="Descrição da imagem">clique para abrir em outra aba</a>
+            </div>
+            <div class="row mt-3">
                 <div class="col-md-20 d-flex justify-content-end">
-                    <a src="/aprovar/{{estudante.id}}" class="btn btn-success">APROVAR</a>
-                    <a src="/negar/{{estudante.id}}" class="btn btn-danger">NEGAR</a>
+                    <a href="/vision_admin" class="btn btn-primary">Voltar</a>
+                    <a href="/aprovar/{{estudante.id}}" class="btn btn-success">APROVAR</a>
+                    <a href="/negar/{{estudante.id}}" class="btn btn-danger">NEGAR</a>
                 </div>
             </div>
         </div>

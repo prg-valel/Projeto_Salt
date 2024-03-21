@@ -147,9 +147,8 @@ def cadastro_page(request):
         perfil.rg = rg
         perfil.campus = campus
         perfil.curso = curso
-        if 'imagem' in request.FILES.keys():
-            perfil.imgrg = request.FILES['imgrg']
-            perfil.imgcomp = request.FILES['imgcomp']
+        perfil.imgrg = request.FILES['imgrg']
+        perfil.imgcomp = request.FILES['imgcomp']
         perfil.save()
         return HttpResponseRedirect('/plataform') 
     else:

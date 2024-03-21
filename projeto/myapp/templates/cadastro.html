@@ -43,14 +43,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" required>
+                        <input type="text" class="form-control" id="cpf" name="cpf"  placeholder="000.000.000-00" required oninput="this.value = this.value.replace(/\D/g, '').substring(0, 11)">
                         {% if mensagem_erro %}
                             <p style="color: red;">{{ mensagem_erro }}</p>
                         {% endif %}
                     </div>
                     <div class="mb-3">
                         <label for="rg" class="form-label">Número do RG</label>
-                        <input type="text" class="form-control" id="rg" name="rg" required>
+                        <input type="text" class="form-control" id="rg" name="rg"placeholder="000 0000-0" required oninput="this.value = this.value.replace(/\D/g, '').substring(0, 8)">
                     </div>
                     <div class="mb-3">Instituição e Campus<select name="instituicao" class="form-select"
                             aria-label="Default select example">
@@ -81,19 +81,19 @@
                     </div>
                         <div class="mt-5">
                             <h4> ENVIO DE IMAGENS !</h4>
+                            <strong>ENVIO OBRIGATÓRIO</strong>
                         </div>
                         <div class="mb-5">
-                            <p>Anexar foto  do <strong>RG</strong>:</p>
-                            <input class="btn btn-secondary" type="file" accept="image/png, image/gif, image/jpeg" name="imgrg">
+                            <p>Anexar foto do <strong>RG</strong>:</p>
+                            <input class="btn btn-secondary" type="file" accept="image/png, image/gif, image/jpeg" name="imgrg" required>
                         </div>
                         <div class="mb-5">
-                            <p>Anexar foto  do <strong>COMPROVANTE DE MATRÍCULA</strong>:</p>
-                            <input class="btn btn-secondary" type="file" accept="image/png, image/gif, image/jpeg" name="imgcomp">
+                            <p>Anexar foto do <strong>COMPROVANTE DE MATRÍCULA</strong>:</p>
+                            <input class="btn btn-secondary" type="file" accept="image/png, image/gif, image/jpeg" name="imgcomp" required>
                         </div>
-                        <button type="submit" class="btn btn-dark mb-4"><h5>ENVIAR SOLICITAÇÃO PARA ANÁLISE DE ABERTURA DE CADASTRO</h5></button>
+                        <button type="submit" class="btn btn-dark mb-4"><strong>ENVIAR SOLICITAÇÃO PARA ANÁLISE DE ABERTURA DE CADASTRO</strong></button>
                 </form>
             </div>
         </div>
     </div>
 {% endblock conteudo %}
-   
