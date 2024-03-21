@@ -31,6 +31,6 @@ class Estudante(models.Model):
     status = models.IntegerField(choices=[(0, 'Pendente'), (1, 'Aprovado'), (2, 'Negado')], default=0)
     campus = models.IntegerField(choices=[(i, nome) for i, nome in CAMPUS.items()], default=0)
     curso = models.IntegerField(choices=[(i, nome) for i, nome in CURSO.items()], default=0)
-    imgrg = models.ImageField(upload_to='images/')  
-    imgcomp = models.ImageField(upload_to='images/')      
+    imgrg = models.ImageField(upload_to='images/', null=True, default=None)  
+    imgcomp = models.ImageField(upload_to='images/', null=True, default=None)      
     

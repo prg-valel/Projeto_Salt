@@ -27,9 +27,20 @@ def aprovar(request, id):
     estudante.save()
     return HttpResponseRedirect('/vision_admin')
 
-def recad_page(request):
-    return render(request, 'recad.html')
 
+@login_required(login_url='/login_user')
+def recad_page(request):
+    if request.method == 'GET':
+        return render(request, 'recad.html')
+    elif request.method == 'POST':
+        perfil = Estudante.objects.get(user=request.user)
+        perfil.imgrg = request.FILES['imgrg']
+        perfil.imgcomp = request.FILES['imgcomp']
+        perfil.status = 0
+        perfil.save()
+        return HttpResponseRedirect('/vision_user') 
+    else:
+        return HttpResponseBadRequest() 
 
 @login_required(login_url='/login_user')
 def negar(request, id):
@@ -119,6 +130,9 @@ def cadastro_page(request):
         curso = request.POST.get('curso')
         email =  request.POST.get('email')
         password =  request.POST.get('senha')
+        if User.objects.filter(username=cpf).exists():
+            mensagem_erro = 'CPF já cadastrado. Por favor, insira um CPF diferente.'
+            return render(request, 'cadastro.html', {'mensagem_erro': mensagem_erro})
         user = User.objects.create_user(cpf, email, password)
         user.first_name = nome
         user.save()
@@ -133,10 +147,10 @@ def cadastro_page(request):
         perfil.rg = rg
         perfil.campus = campus
         perfil.curso = curso
-        perfil.imgrg = request.FILES['imgrg']
-        perfil.imgcomp = request.FILES['imgcomp']
+        if 'imagem' in request.FILES.keys():
+            perfil.imgrg = request.FILES['imgrg']
+            perfil.imgcomp = request.FILES['imgcomp']
         perfil.save()
-        
         return HttpResponseRedirect('/plataform') 
     else:
         return HttpResponseBadRequest() 

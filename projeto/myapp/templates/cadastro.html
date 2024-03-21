@@ -44,6 +44,9 @@
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" required>
+                        {% if mensagem_erro %}
+                            <p style="color: red;">{{ mensagem_erro }}</p>
+                        {% endif %}
                     </div>
                     <div class="mb-3">
                         <label for="rg" class="form-label">Número do RG</label>
